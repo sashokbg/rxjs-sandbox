@@ -1,18 +1,10 @@
-import {filter, flatMap, map, mergeAll, mergeMap} from 'rxjs/operators';
-import {merge, Observable, of, Subject, timer} from "rxjs";
+import {delay} from 'rxjs/operators';
+import {of} from "rxjs";
 
 console.log('=== Start ===');
 
-const click$ = new Subject();
-const timer$ = new Subject();
-
-setTimeout(() => {
-  click$.next(timer$)
-}, 1000);
-
-setTimeout(() => {
-  timer$.next("Button timeout !");
-}, 1000);
+const timer$ = of("Button Clicked").pipe(delay(1000));
+const click$ = of(timer$).pipe(delay(1000));
 
 // NAIVE
 

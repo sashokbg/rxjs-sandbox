@@ -1,5 +1,5 @@
-import {from, fromEvent, interval, Observable, of} from "rxjs";
-import {take} from "rxjs/operators";
+import {from, interval, Observable, of, Subject} from "rxjs";
+import {delay, take} from "rxjs/operators";
 
 const observable = of(1);
 
@@ -15,6 +15,16 @@ observable2.subscribe(console.log);
 const observable3 = from([1, 2, 3, 4, 5]);
 
 observable3.subscribe(console.log);
+
+// Same thing
+
+let event = new Subject();
+
+setTimeout(() => {
+  event.next("EVENT")
+}, 250);
+
+let event2 = of("EVENT").pipe(delay(1000));
 
 const observable4 = interval(1000).pipe(take(2));
 

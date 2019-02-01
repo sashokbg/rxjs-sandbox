@@ -1,17 +1,10 @@
-import {Observable, Subject} from "rxjs";
+import {Observable, of} from "rxjs";
+import {delay} from "rxjs/operators";
 
 console.log('=== Start ===');
 
-const click$ = new Subject();
-const timer$ = new Subject();
-
-setTimeout(() => {
-  click$.next(timer$)
-}, 1000);
-
-setTimeout(() => {
-  timer$.next("Button timeout !");
-}, 2000);
+const timer$ = of("Button Clicked").pipe(delay(1000));
+const click$ = of(timer$).pipe(delay(1000));
 
 // NAIVE
 

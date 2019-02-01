@@ -1,19 +1,10 @@
-import {mergeMap, switchMap} from 'rxjs/operators';
-import {interval, Subject} from "rxjs";
+import {delay, mergeMap, switchMap} from 'rxjs/operators';
+import {interval, of, Subject} from "rxjs";
 
 console.log('=== Start ===');
 
-const click$ = new Subject();
-let timer$ = interval(1000);
-let timer2$ = interval(1000);
-
-setTimeout(() => {
-  click$.next(timer$)
-}, 500);
-
-setTimeout(() => {
-  click$.next(timer2$)
-}, 2000);
+const timer$ = of("Button Clicked").pipe(delay(1000));
+const click$ = of(timer$).pipe(delay(1000));
 
 click$.pipe(
   switchMap((interval) => {
