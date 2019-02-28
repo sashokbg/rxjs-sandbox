@@ -1,5 +1,5 @@
 import {delay, mergeMap} from 'rxjs/operators';
-import {interval, of, Subject} from "rxjs";
+import {of} from "rxjs";
 
 console.log('=== Start ===');
 
@@ -7,8 +7,8 @@ const timer$ = of("Button Clicked").pipe(delay(1000));
 const click$ = of(timer$).pipe(delay(1000));
 
 click$.pipe(
-  mergeMap((interval) => {
+  mergeMap((timer$) => {
     console.log("click");
-    return interval
+    return timer$
   })
 ).subscribe(result => console.log(result));

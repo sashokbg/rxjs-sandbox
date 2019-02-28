@@ -24,7 +24,7 @@ setTimeout(() => {
   event.next("EVENT")
 }, 250);
 
-let event2 = of("EVENT").pipe(delay(1000));
+let event2 = of("EVENT").pipe(delay(250));
 
 const observable4 = interval(1000).pipe(take(2));
 
