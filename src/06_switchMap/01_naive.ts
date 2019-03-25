@@ -9,15 +9,15 @@ let timer2$ = interval(1000);
 
 setTimeout(() => {
   click$.next(timer$)
-}, 250);
+}, 0);
 
 setTimeout(() => {
   click$.next(timer2$)
-}, 2000);
+}, 3000);
 
 click$.pipe(
   mergeMap((interval) => {
-    console.log("click");
+    console.log("DO CLICK");
     return interval
   })
-).subscribe(result => console.log(result));
+).subscribe(result => console.log('DO TICK ', result));

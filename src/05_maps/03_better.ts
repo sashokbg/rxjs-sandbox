@@ -3,13 +3,13 @@ import {of} from "rxjs";
 
 console.log('=== Start ===');
 
-const timer$ = of("Button Clicked").pipe(delay(1000));
+const timer$ = of("<Button Clicked>").pipe(delay(1000));
 const click$ = of(timer$).pipe(delay(1000));
 
 click$.pipe(
   map((myTimer) => {
-    console.log("click");
+    console.log("DO CLICK");
     return myTimer;
   }),
   mergeAll()
-).subscribe(result => console.log(result));
+).subscribe(result => console.log('DO TIMEOUT', result));

@@ -17,7 +17,7 @@ setTimeout(() => {
 
 click$.pipe(
   switchMap((interval) => {
-    console.log("click");
+    console.log("DO CLICK");
     return interval
   })
-).subscribe(result => console.log(result));
+).subscribe(result => console.log('DO TICK ', result));
