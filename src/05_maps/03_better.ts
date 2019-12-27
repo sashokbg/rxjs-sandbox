@@ -7,9 +7,5 @@ const timer$ = of("<Button Clicked>").pipe(delay(1000));
 const click$ = of(timer$).pipe(delay(1000));
 
 click$.pipe(
-  map((myTimer) => {
-    console.log("DO CLICK");
-    return myTimer;
-  }),
   mergeAll()
 ).subscribe(result => console.log('DO TIMEOUT', result));
